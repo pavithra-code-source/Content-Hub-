@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nira AI | Multi-Channel Business Assistant</title>
+    <!-- SEO Best Practices -->
+    <meta name="description" content="AI-powered 24/7 virtual receptionist for Indian businesses. Automate WhatsApp, missed calls, and web chats with real-time translation and UPI payments.">
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body class="landing-body">
+    <!-- Navigation -->
+    <nav class="navbar" id="landing-nav">
+        <div class="container nav-container">
+            <div class="logo">
+                <i data-feather="hexagon" class="logo-icon"></i>
+                <span>Nira AI</span>
+            </div>
+            <ul class="nav-links-horizontal">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn btn-outline" id="loginBtn">Login</a>
+                <a href="dashboard.html" class="btn btn-primary" id="demoBtn">View Dashboard Demo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="glow-sphere sphere-1"></div>
+        <div class="glow-sphere sphere-2"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge-pill pulse-badge" id="ai-badge">
+                    <span class="pulse-dot"></span> Next-Gen AI for Indian Businesses
+                </div>
+                <h1 id="hero-title">Never Miss a Customer Again.</h1>
+                <p id="hero-subtitle">Your 24/7 intelligent virtual receptionist. Handle WhatsApp, missed calls, and web inquiries automatically—with real-time translation, voice recognition, and instant UPI payments.</p>
+                <div class="hero-cta">
+                    <a href="dashboard.html" class="btn btn-primary btn-lg" id="startFreeBtn"><i data-feather="zap"></i> Start Free Trial</a>
+                    <button class="btn btn-glass btn-lg" id="watchVideoBtn" onclick="window.location.href='dashboard.html'"><i data-feather="play-circle"></i> See How it Works</button>
+                </div>
+                <div class="trusted-by" id="trusted">
+                    <p>Built for Salons, Clinics, Restaurants & Service Providers</p>
+                </div>
+            </div>
+            <div class="hero-visual" id="hero-mockup">
+                <div class="glass-card mockup-card">
+                    <div class="mockup-header">
+                        <i data-feather="message-circle" class="wa-icon"></i> WhatsApp AI Agent
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-msg incoming">
+                            "Hi, can I get an appointment for tomorrow evening? And what is the charge?"
+                        </div>
+                        <div class="mockup-msg system">
+                            <i data-feather="cpu"></i> Analyzing customer intent...
+                        </div>
+                        <div class="mockup-msg system-ai">
+                            <i data-feather="cpu"></i> Checking availability for tomorrow evening...
+                        </div>
+                        <div class="mockup-msg outgoing">
+                            "Yes, a slot is available at 5:00 PM tomorrow. The consultation charge is ₹500. Should I book it for you?"
+                        </div>
+                        <div class="mockup-action-btn" onclick="window.location.href='dashboard.html'">
+                            <i data-feather="smartphone"></i> Go To Dashboard to Test Features
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 id="features-title">Everything you need to grow without growing overhead.</h2>
+                <p id="features-subtitle">Nira AI connects all your channels and closes leads for you effortlessly.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card" id="feature-1">
+                    <div class="icon-wrapper wa-bg"><i data-feather="message-circle"></i></div>
+                    <h3>WhatsApp & Web Automation</h3>
+                    <p>Auto-reply contextually, answer FAQs, and collect lead data natively on WhatsApp or your website.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card" id="feature-2">
+                    <div class="icon-wrapper ivr-bg"><i data-feather="phone-missed"></i></div>
+                    <h3>Missed Call Intelligence</h3>
+                    <p>Automatically detect missed calls and trigger an instant text-based IVR or WhatsApp follow-up.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card" id="feature-3">
+                    <div class="icon-wrapper lang-bg"><i data-feather="globe"></i></div>
+                    <h3>Real-Time Translation</h3>
+                    <p>Speak the customer's language. Auto-translate regional languages seamlessly during chat.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="feature-card" id="feature-4">
+                    <div class="icon-wrapper voice-bg"><i data-feather="mic"></i></div>
+                    <h3>Voice Recognition</h3>
+                    <p>Customers can send voice notes. We transcribe them instantly and parse the intent.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="feature-card" id="feature-5">
+                    <div class="icon-wrapper pay-bg"><i data-feather="dollar-sign"></i></div>
+                    <h3>Instant UPI Payments</h3>
+                    <p>Close the deal faster. Generate dynamic UPI payment requests directly in the chat.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="feature-card" id="feature-6">
+                    <div class="icon-wrapper cal-bg"><i data-feather="calendar"></i></div>
+                    <h3>Smart Booking</h3>
+                    <p>Check availability, book slots, and send automated confirmations and reminders automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container text-center">
+            <h2 id="footer-title">Ready to automate your operations?</h2>
+            <p id="footer-subtitle">Deploy Nira AI in minutes with zero technical expertise required.</p>
+            <a href="dashboard.html" class="btn btn-primary btn-lg mt-4" id="footer-btn">Launch Dashboard Prototype</a>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Add minimal scroll effect for nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(15, 17, 26, 0.9)';
+                nav.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+                nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+            } else {
+                nav.style.background = 'transparent';
+                nav.style.borderBottom = '1px solid transparent';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

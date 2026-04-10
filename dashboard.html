@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Assistant</title>
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Feather Icons for sleek scalable icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i data-feather="hexagon" class="logo-icon"></i>
+                <span>Nira AI</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><i data-feather="inbox"></i> Inbox</li>
+                <li><i data-feather="bar-chart-2"></i> Dashboard</li>
+                <li><i data-feather="users"></i> Leads</li>
+                <li><i data-feather="phone-incoming"></i> Missed Calls</li>
+                <li><i data-feather="calendar"></i> Appointments</li>
+            </ul>
+            <div class="sidebar-bottom">
+                <ul>
+                    <li><i data-feather="settings"></i> Settings</li>
+                </ul>
+                <div class="user-profile">
+                    <div class="avatar">OM</div>
+                    <div class="user-info">
+                        <span class="user-name">Om Mobile Shop</span>
+                        <span class="user-role">Owner</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-nav">
+                <div class="header-title">
+                    <h1>Unified Inbox <span class="badge">AI Assisted</span></h1>
+                </div>
+                <div class="header-actions">
+                    <div class="ai-status">
+                        <span class="pulse-dot"></span> AI Active
+                    </div>
+                    <!-- Master Language Translation Toggle for Dashboard -->
+                    <div class="translation-toggle" id="globalTranslateBtn">
+                        <i data-feather="globe"></i>
+                        <span id="currentLang">EN</span>
+                    </div>
+                    <div id="usbStatusBadge" class="ai-status" style="color: var(--text-secondary); background: rgba(255,255,255,0.05); border-color: var(--border-color);">
+                        <i data-feather="usb"></i> USB: Offline
+                    </div>
+                    <button class="btn btn-outline btn-sm" id="simulateCallBtn" style="border-color: var(--warning); color: var(--warning);">
+                        <i data-feather="phone-incoming"></i> Test Call
+                    </button>
+                    <button class="icon-btn"><i data-feather="bell"></i></button>
+                </div>
+            </header>
+
+            <!-- Sidebar View: Dashboard -->
+            <div id="view-dashboard" class="app-view">
+                <div class="section-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon purple"><i data-feather="users"></i></div>
+                                <span class="stat-trend up">+12%</span>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Total Customers</h4>
+                                <div class="stat-value">1,284</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon blue"><i data-feather="message-square"></i></div>
+                                <span class="stat-trend up">+8%</span>
+                            </div>
+                            <div class="stat-info">
+                                <h4>AI Conversations</h4>
+                                <div class="stat-value">462</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon green"><i data-feather="trending-up"></i></div>
+                                <span class="stat-trend up">+24%</span>
+                            </div>
+                            <div class="stat-info">
+                                <h4>Revenue (Mock)</h4>
+                                <div class="stat-value">₹42,500</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <h3>Recent Activity</h3>
+                            <button class="btn btn-outline btn-sm">Full Report</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Source</th>
+                                    <th>Interaction</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="source-icon wa">WhatsApp</span></td>
+                                    <td>New inquiry for Screen Repair</td>
+                                    <td><span class="status-pill hot">Hot Lead</span></td>
+                                    <td>2 mins ago</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="source-icon ivr">Missed Call</span></td>
+                                    <td>Follow-up automated reply sent</td>
+                                    <td><span class="status-pill warm">Warm</span></td>
+                                    <td>1 hour ago</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar View: Leads -->
+            <div id="view-leads" class="app-view">
+                <div class="section-content">
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <h3>Potential Customers</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="text" placeholder="Search leads..." style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); padding: 5px 12px; border-radius: 6px; color: white; font-size: 13px;">
+                                <button class="btn btn-primary btn-sm">Export CSV</button>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Source</th>
+                                    <th>Interest</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><div class="table-avatar"><div class="avatar">AK</div> Amit Kumar</div></td>
+                                    <td><span class="source-icon wa">WA</span></td>
+                                    <td>iPhone 14 Battery</td>
+                                    <td><span class="status-pill hot">Hot</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Chat</button></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="table-avatar"><div class="avatar">SN</div> S. Nelson</div></td>
+                                    <td><span class="source-icon web">Web</span></td>
+                                    <td>Service pricing</td>
+                                    <td><span class="status-pill warm">Warm</span></td>
+                                    <td><button class="btn btn-outline btn-sm">Chat</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar View: Missed Calls -->
+            <div id="view-missed-calls" class="app-view">
+                <div class="section-content">
+                    <div class="data-table-container">
+                        <div class="table-header">
+                            <h3>Automated Follow-ups</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Phone Number</th>
+                                    <th>Duration</th>
+                                    <th>AI Action Taken</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>+91 91234 56789</td>
+                                    <td>0:12</td>
+                                    <td>Sent WhatsApp Greeting & Link</td>
+                                    <td><span class="status-pill called">Handled</span></td>
+                                </tr>
+                                <tr>
+                                    <td>+91 98765 43210</td>
+                                    <td>0:08</td>
+                                    <td>Collected voice note & booked slot</td>
+                                    <td><span class="status-pill called">Handled</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar View: Settings -->
+            <div id="view-settings" class="app-view">
+                <div class="section-content">
+                    <div class="table-header" style="margin-bottom: 30px;">
+                        <h3>Account & Preferences</h3>
+                    </div>
+                    
+                    <div class="settings-container" style="max-width: 800px; display: flex; flex-direction: column; gap: 32px;">
+                        <!-- Business Category -->
+                        <div class="settings-group">
+                            <h4 style="font-size: 14px; text-transform: uppercase; color: var(--accent-secondary); margin-bottom: 16px; letter-spacing: 1px;">Business Profile</h4>
+                            <div class="data-table-container" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Business Name</label>
+                                    <input type="text" id="setting-biz-name" value="Om Mobile Shop" style="background: rgba(0,0,0,0.3);">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Location / Address</label>
+                                    <input type="text" value="Main Market, Delhi" style="background: rgba(255,255,255,0.05);">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Communication Settings -->
+                        <div class="settings-group">
+                            <h4 style="font-size: 14px; text-transform: uppercase; color: var(--accent-secondary); margin-bottom: 16px; letter-spacing: 1px;">AI Automation</h4>
+                            <div class="data-table-container" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Missed Call Auto-Reply Message</label>
+                                    <textarea id="setting-auto-reply" style="width: 100%; height: 80px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; border-radius: 8px; font-size: 13px; resize: none;">Namaste! This is Nira AI from Om Mobile Shop. We missed your call, but we are here to help! Please tell us how we can assist you.</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Persona -->
+                        <div class="settings-group">
+                            <h4 style="font-size: 14px; text-transform: uppercase; color: var(--accent-secondary); margin-bottom: 16px; letter-spacing: 1px;">AI Assistant Persona</h4>
+                            <div class="data-table-container" style="padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Voice Gender</label>
+                                    <select id="setting-ai-voice" style="width: 100%; padding: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: white; border-radius: 8px;">
+                                        <option value="female">Female (Recommended)</option>
+                                        <option value="male">Male</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Speaking Speed</label>
+                                    <input type="range" min="0.5" max="1.5" step="0.1" value="1.0" style="width: 100%; margin-top: 10px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" id="saveSettingsBtn" style="padding: 12px 24px; align-self: flex-start;">Save All Changes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar View: Appointments -->
+            <div id="view-appointments" class="app-view">
+                <div class="section-content">
+                    <div class="table-header">
+                        <h3>Today's Schedule</h3>
+                        <button class="btn btn-primary btn-sm" id="newAppointmentBtn"><i data-feather="plus"></i> New Appointment</button>
+                    </div>
+                    <div class="appointments-grid" style="display: grid; gap: 16px; margin-top: 20px;">
+                        <!-- Appointment 1 -->
+                        <div class="appointment-card" style="background: var(--panel-bg); border: 1px solid var(--border-color); padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 20px;">
+                            <div class="time-box" style="width: 80px; text-align: center; border-right: 1px solid var(--border-color); padding-right: 20px;">
+                                <div style="font-size: 18px; font-weight: 700;">04:00</div>
+                                <div style="font-size: 11px; color: var(--text-secondary);">PM</div>
+                            </div>
+                            <div class="appointment-info" style="flex: 1;">
+                                <h4 style="font-size: 15px; margin-bottom: 4px;">Rahul Sharma</h4>
+                                <p style="font-size: 13px; color: var(--text-secondary);"><i data-feather="tool" style="width: 12px;"></i> Screen Repair (iPhone 13)</p>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="status-pill warm">Confirmed</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm">Check-in</button>
+                        </div>
+                        
+                        <!-- Appointment 2 -->
+                        <div class="appointment-card" style="background: var(--panel-bg); border: 1px solid var(--border-color); padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 20px; opacity: 0.7;">
+                            <div class="time-box" style="width: 80px; text-align: center; border-right: 1px solid var(--border-color); padding-right: 20px;">
+                                <div style="font-size: 18px; font-weight: 700;">05:30</div>
+                                <div style="font-size: 11px; color: var(--text-secondary);">PM</div>
+                            </div>
+                            <div class="appointment-info" style="flex: 1;">
+                                <h4 style="font-size: 15px; margin-bottom: 4px;">Priya Singh</h4>
+                                <p style="font-size: 13px; color: var(--text-secondary);"><i data-feather="battery" style="width: 12px;"></i> Battery Replacement</p>
+                            </div>
+                            <div class="appointment-status">
+                                <span class="status-pill called">Completed</span>
+                            </div>
+                            <button class="btn btn-outline btn-sm" disabled>Checked-in</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workspace (Unified Inbox View) -->
+            <div class="workspace app-view active" id="view-inbox">
+                <!-- Conversation List -->
+                <aside class="conversation-list">
+                    <div class="search-bar">
+                        <i data-feather="search"></i>
+                        <input type="text" placeholder="Search chats, leads...">
+                    </div>
+                    <div class="filter-tabs">
+                        <span class="tab active">All</span>
+                        <span class="tab">WhatsApp</span>
+                        <span class="tab">IVR/Phone</span>
+                    </div>
+                    <div class="chats">
+                        <div class="chat-item active">
+                            <div class="chat-avatar"><i data-feather="message-circle"></i></div>
+                            <div class="chat-summary">
+                                <h3>Rahul Sharma <span class="source-icon wa">WA</span></h3>
+                                <p>Needs repair for screen...</p>
+                            </div>
+                            <div class="chat-meta">
+                                <span class="time">10:42 AM</span>
+                                <span class="unread">2</span>
+                            </div>
+                        </div>
+                        <div class="chat-item unread">
+                            <div class="chat-avatar call"><i data-feather="phone-call"></i></div>
+                            <div class="chat-summary">
+                                <h3>+91 98765 43210 <span class="source-icon ivr">IVR</span></h3>
+                                <p>AI: Voice captured... </p>
+                            </div>
+                            <div class="chat-meta">
+                                <span class="time">09:15 AM</span>
+                                <span class="unread highlighted">Missed</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Active Conversation Window -->
+                <section class="active-chat">
+                    <div class="chat-header">
+                        <div class="chat-user-info">
+                            <h2>Rahul Sharma</h2>
+                            <p>WhatsApp • <span class="lang-tag">English</span></p>
+                        </div>
+                        <div class="chat-tools">
+                            <button class="tool-btn active" id="translateToggle" title="Grammar / Simplify">
+                                <i data-feather="repeat"></i> Enhance Message
+                            </button>
+                            <button class="tool-btn"><i data-feather="phone"></i> Call</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatArea">
+                        <div class="message incoming">
+                            <div class="msg-bubble">
+                                <div class="msg-text">My phone fell and the screen broke. How much will it cost?</div>
+                            </div>
+                            <span class="msg-time">10:40 AM</span>
+                        </div>
+                        
+                        <div class="message system-ai">
+                            <div class="msg-bubble ai-suggestion">
+                                <span class="ai-label"><i data-feather="cpu"></i> AI Auto-Reply Proposed</span>
+                                <div class="msg-text">The cost is ₹2500. It can be repaired today itself.</div>
+                                <div class="ai-actions">
+                                    <button class="btn btn-primary btn-sm">Send</button>
+                                    <button class="btn btn-outline btn-sm">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="chat-input-area">
+                        <button class="attach-btn" id="upiRequestBtn" title="Request Payment">
+                            <i data-feather="dollar-sign"></i>
+                        </button>
+                        <button class="attach-btn"><i data-feather="paperclip"></i></button>
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="Type a message...">
+                            <button class="mic-btn" id="voiceMicBtn"><i data-feather="mic"></i></button>
+                        </div>
+                        <button class="send-btn"><i data-feather="send"></i></button>
+                    </div>
+                </section>
+                
+                <!-- Lead Profile Sidebar -->
+                <aside class="lead-profile">
+                    <h3>Lead Details</h3>
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="avatar lg">RS</div>
+                            <h4>Rahul Sharma</h4>
+                            <p class="status warm">Warm Lead</p>
+                        </div>
+                        <div class="profile-details">
+                            <div class="detail-row"><i data-feather="phone"></i> +91 98765 XXXXX</div>
+                            <div class="detail-row"><i data-feather="tag"></i> Screen Repair</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <h4>AI Actions</h4>
+                        <button class="action-btn"><i data-feather="calendar"></i> Book Slot (4 PM)</button>
+                        <button class="action-btn special" id="generateUpiShortcutBtn"><i data-feather="smartphone"></i> Send UPI Link</button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <!-- UPI Modal Overlay -->
+    <div class="modal-overlay" id="upiModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Request UPI Payment</h2>
+                <button class="close-btn" id="closeUpiModal"><i data-feather="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Generate a fast payment link for the customer. They can pay via GPay, PhonePe or Paytm.</p>
+                <div class="form-group">
+                    <label>Amount (₹)</label>
+                    <input type="number" id="upiAmount" placeholder="e.g. 2500" value="2500">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="upiDesc" placeholder="e.g. Screen Repair" value="Screen Repair Advance">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelUpiBtn">Cancel</button>
+                <button class="btn btn-primary" id="sendUpiBtn"><i data-feather="send"></i> Send to WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI Overlay for Voice Recording -->
+    <div class="voice-overlay" id="voiceOverlay">
+        <div class="voice-indicator">
+            <div class="pulsing-circles">
+                <div class="circle c1"></div>
+                <div class="circle c2"></div>
+                <div class="circle c3"></div>
+            </div>
+            <i data-feather="mic" class="recording-icon"></i>
+            <p>Listening... <span id="recordingTimer">0:00</span></p>
+            <p class="text-sm">Speak your message aloud...</p>
+        </div>
+    </div>
+
+    <!-- New Appointment Modal -->
+    <div class="modal-overlay" id="appointmentModal">
+        <div class="modal" style="width: 400px;">
+            <div class="modal-header">
+                <h2>Schedule New Appointment</h2>
+                <button class="close-btn" id="closeApptModal"><i data-feather="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Customer Name</label>
+                    <input type="text" id="appt-cust-name" placeholder="e.g. Rahul Sharma">
+                </div>
+                <div class="form-group">
+                    <label>Service Type</label>
+                    <select id="appt-service" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; border-radius: 8px;">
+                        <option value="Screen Repair">Screen Repair</option>
+                        <option value="Battery Replacement">Battery Replacement</option>
+                        <option value="Software Update">Software Update</option>
+                        <option value="General Service">General Service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Time</label>
+                    <input type="time" id="appt-time" value="16:00">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelApptBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveApptBtn">Book Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Edit Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal" style="width: 360px;">
+            <div class="modal-header">
+                <h2>Edit Business Profile</h2>
+                <button class="close-btn" id="closeProfileModal"><i data-feather="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 24px;">
+                    <div class="avatar lg" style="margin: 0 auto 12px; cursor: pointer; border: 2px dashed var(--border-color); background: transparent; color: var(--text-secondary);">
+                        <i data-feather="camera"></i>
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-secondary);">Click to upload new logo</p>
+                </div>
+                <div class="form-group">
+                    <label>Owner Name</label>
+                    <input type="text" id="edit-owner-name" value="Om Mobile Shop">
+                </div>
+                <div class="form-group">
+                    <label>Business Category</label>
+                    <input type="text" value="Retail & Service" disabled style="opacity: 0.6;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelProfileBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveProfileBtn">Update Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incoming Call Modal -->
+    <div class="modal-overlay" id="callModal">
+        <div class="modal" style="width: 320px; text-align: center; background: linear-gradient(180deg, #1e2130 0%, #0f111a 100%);">
+            <div class="modal-body" style="padding: 40px 24px;">
+                <div class="pulse-ring" style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.2); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;">
+                    <i data-feather="phone-call" style="width: 32px; height: 32px; color: var(--success); animation: shake 0.5s infinite;"></i>
+                </div>
+                <h2 style="margin-bottom: 8px;">+91 91234 56789</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 32px;">Incoming Phone Call...</p>
+                <div style="display: flex; gap: 16px; justify-content: center;">
+                    <button class="btn" id="rejectCallBtn" style="background: var(--danger); width: 60px; height: 60px; border-radius: 50%;"><i data-feather="phone-off"></i></button>
+                    <button class="btn" id="answerCallBtn" style="background: var(--success); width: 60px; height: 60px; border-radius: 50%;"><i data-feather="phone"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="app.v12.js"></script>
+    <script>
+        // Initialize Feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
